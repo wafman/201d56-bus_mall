@@ -51,12 +51,12 @@ section {
 }
 
 section img {
-  height: 200px;
-  width: auto;
+  float: left;
 }
 
 /* This section covers the footer */
 footer {
+  clear: both;
   border: 1px solid black;
   height: 100px;
   width: 960px;
