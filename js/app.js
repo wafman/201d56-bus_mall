@@ -24,6 +24,7 @@ var product1 = document.getElementById('product1');
 var product2 = document.getElementById('product2');
 var product3 = document.getElementById('product3');
 
+var voteTally = document.getElementById('voteTally');
 
 //      Constructor Functions
 function ProductImage(name){
@@ -44,7 +45,7 @@ function ProductImage(name){
 function checkProductArray(product){
   for(var i = 0; i < previousArray.length; i++){
     if(product === previousArray[i]){
-      console.log('checking previousArray');
+      // console.log('checking previousArray');
       product = Math.floor(Math.random() * allProducts.length);
     }
   }
@@ -54,14 +55,14 @@ function checkProductArray(product){
 
 //  Core Functionality
 function showRandomProduct1(){
-  console.log('showRandomProduct called');
+  // console.log('showRandomProduct called');
   var randomImg1 = Math.floor(Math.random() * allProducts.length);
-  console.log(randomImg1);
+  // console.log(randomImg1);
   checkProductArray(randomImg1);
   while(randomImg1 === previous1 || randomImg1 === previous2 || randomImg1 === previous3){
     randomImg1 = Math.floor(Math.random() * allProducts.length);
-    console.log('duplicate found');
-    console.log('new randimage is ', randomImg1);
+    // console.log('duplicate found');
+    // console.log('new randimage is ', randomImg1);
   }
   previous1 = randomImg1;
   previousArray[0] = randomImg1;
@@ -72,14 +73,14 @@ function showRandomProduct1(){
 }
 
 function showRandomProduct2(){
-  console.log('showRandomProduct called');
+  // console.log('showRandomProduct called');
   var randomImg2 = Math.floor(Math.random() * allProducts.length);
-  console.log(randomImg2);
+  // console.log(randomImg2);
   checkProductArray(randomImg2);
   while(randomImg2 === previous1 || randomImg2 === previous2 || randomImg2 === previous3){
     randomImg2 = Math.floor(Math.random() * allProducts.length);
-    console.log('duplicate found');
-    console.log('new randimage is ', randomImg2);
+    // console.log('duplicate found');
+    // console.log('new randimage is ', randomImg2);
   }
   previous2 = randomImg2;
   previousArray[1] = randomImg2;
@@ -90,14 +91,14 @@ function showRandomProduct2(){
 }
 
 function showRandomProduct3(){
-  console.log('showRandomProduct called');
+  // console.log('showRandomProduct called');
   var randomImg3 = Math.floor(Math.random() * allProducts.length);
-  console.log(randomImg3);
+  // console.log(randomImg3);
   checkProductArray(randomImg3);
   while(randomImg3 === previous1 || randomImg3 === previous2 || randomImg3 === previous3){
     randomImg3 = Math.floor(Math.random() * allProducts.length);
-    console.log('duplicate found');
-    console.log('new randimage is ', randomImg3);
+    // console.log('duplicate found');
+    // console.log('new randimage is ', randomImg3);
   }
   previous1 = randomImg3;
   previousArray[2] = randomImg3;
@@ -106,17 +107,31 @@ function showRandomProduct3(){
   product3.alt = allProducts[randomImg3].name;
   product3.title = allProducts[randomImg3].name;
 }
+
+function renderList(){
+  var liEl = document.createElement('li');
+  for(var i = 0; i < allProducts.length; i++){
+    liEl = document.createElement('li');
+    liEl.textContent = `${allProducts[i].votes} votes for ${allProducts[i].name}`;
+    voteTally.appendChild(liEl);
+  }
+}
+
 //  Event Handlers
 function handleSectionClick(event){
   if(totalVotes < 25){
     console.log('event handler works', event.target);
+    console.log('event taget name = ', event.target.name);
+    console.log('event target votes = ', event.target.votes);
     event.target.votes++;
+    console.log('event target votes = ', event.target.votes);
     totalVotes++;
     showRandomProduct1();
     showRandomProduct2();
     showRandomProduct3();
   } else {
-    alert('you\'ve reached 25 votes');
+    productContainer.removeEventListener('click', handleSectionClick);
+    renderList();
   }
 
 }
