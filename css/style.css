@@ -45,6 +45,10 @@ main p {
   margin: 30px;
 }
 
+main ul li {
+  display: block;
+}
+
 section {
   border: 20px solid green;
   border-radius: 15px;
