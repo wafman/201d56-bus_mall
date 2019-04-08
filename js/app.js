@@ -12,7 +12,7 @@ var allProducts = [];
 
 
 //      Constructor Functions
-function productImage(name){
+function ProductImage(name){
   console.log(name, ' is created');
   this.filepath = `img/${name}.jpg`;
   this.name = name;
@@ -34,7 +34,26 @@ function productImage(name){
 
 
 // ++++++++++++++++++++Executable Code++++++++++++++++++++\\
-
+new ProductImage('bag');
+new ProductImage('banana');
+new ProductImage('bathroom');
+new ProductImage('boots');
+new ProductImage('breakfast');
+new ProductImage('bubblegum');
+new ProductImage('chair');
+new ProductImage('cthulhu');
+new ProductImage('dog-duck');
+new ProductImage('dragon');
+new ProductImage('pen');
+new ProductImage('pet-sweep');
+new ProductImage('scissors');
+new ProductImage('shark');
+new ProductImage('sweep');
+new ProductImage('tauntaun');
+new ProductImage('unicorn');
+new ProductImage('usb');
+new ProductImage('water-can');
+new ProductImage('wine-glass');
 //      Functions Calls
 
 //      Event listeners
