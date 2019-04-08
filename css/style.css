@@ -51,7 +51,8 @@ section {
 }
 
 section img {
-  float: left;
+  border: 1px solid black;
+  margin: 15px;
 }
 
 /* This section covers the footer */
