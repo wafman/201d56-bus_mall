@@ -144,6 +144,19 @@ function renderList(){
   }
 }
 
+function showTotalVotes(){
+  document.getElementById('votesRemaining').textContent = `Votes Remaining: ${totalVotes}`;
+}
+
+// function hideElement(element){
+//   document.getElementById(element).hidden = true;
+// }
+
+function showElement(element){
+  console.log('showElement function works', element);
+  document.getElementById(element).style.display = 'block';
+}
+
 //  Event Handlers
 function handleSectionClick(event){
   if(totalVotes > 0){ //changed totalVotes to decrement starting at 25
@@ -154,11 +167,15 @@ function handleSectionClick(event){
       }
     }
     totalVotes--;
+    showTotalVotes();
+    console.log('total votes = ', totalVotes);
     showRandomProduct1();
     showRandomProduct2();
     showRandomProduct3();
   } else {
     productContainer.removeEventListener('click', handleSectionClick);
+    showElement('generateList');
+    showElement('generateChart');
     // renderList();
   }
 
@@ -188,10 +205,11 @@ new ProductImage('wine-glass');
 
 
 //      Functions Calls
+showTotalVotes();
 showRandomProduct1();
 showRandomProduct2();
 showRandomProduct3();
-document.getElementById('votesRemaining').textContent = `Votes Remaining: ${totalVotes}`;
+
 
 
 //      Event listeners
