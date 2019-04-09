@@ -70,6 +70,11 @@ function showRandomProduct1(){
   product1.src = allProducts[randomImg1].filepath;
   product1.alt = allProducts[randomImg1].name;
   product1.title = allProducts[randomImg1].name;
+  // var product1Vote = allProducts[randomImg1].votes; //new line testing debug of votes not counting
+  // if(event.target === product1){
+  //   allProducts[randomImg1].votes++;
+  // }
+  return allProducts[randomImg1];
 }
 
 function showRandomProduct2(){
@@ -88,6 +93,11 @@ function showRandomProduct2(){
   product2.src = allProducts[randomImg2].filepath;
   product2.alt = allProducts[randomImg2].name;
   product2.title = allProducts[randomImg2].name;
+  // allProducts[randomImg2].votes; //new line testing debug of votes not counting
+  // if(event.target === product2){
+  //   allProducts[randomImg2].votes++;
+  // }
+
 }
 
 function showRandomProduct3(){
@@ -106,6 +116,11 @@ function showRandomProduct3(){
   product3.src = allProducts[randomImg3].filepath;
   product3.alt = allProducts[randomImg3].name;
   product3.title = allProducts[randomImg3].name;
+  // allProducts[randomImg3].votes; //new line testing debug of votes not counting
+  // if(event.target === product3){
+  //   allProducts[randomImg3].votes++;
+  // }
+
 }
 
 function renderList(){
@@ -123,8 +138,9 @@ function handleSectionClick(event){
     console.log('event handler works', event.target);
     console.log('event taget name = ', event.target.name);
     console.log('event target votes = ', event.target.votes);
-    event.target.votes++;
-    console.log('event target votes = ', event.target.votes);
+    allProducts[event.target.id][name];
+    event.target.votes += 1;
+    console.log('event target votes ');
     totalVotes++;
     showRandomProduct1();
     showRandomProduct2();
