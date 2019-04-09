@@ -1,0 +1,70 @@
+/* This section covers the entire body */
+body {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+/* This section covers the header */
+header {
+  border: 1px solid black;
+  height: 100px;
+  width: 960px;
+  margin: 30px auto;
+  text-align: center;
+}
+ul li {
+  border: 2px dotted blue;
+  background-color: beige;
+  display: inline;
+  padding: 15px;
+  margin: 15px;
+  vertical-align: bottom;
+}
+
+nav a {
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+}
+
+/* This section covers the main */
+main {
+  border: 1px solid black;
+  width: 960px;
+  margin: 30px auto;
+  text-align: center;
+}
+
+main h1 {
+  font-size: 2em;
+  font-weight: bold;
+  margin: 30px;
+}
+
+main p {
+  line-height: 1.5em;
+  margin: 30px;
+}
+
+main ul li {
+  display: block;
+}
+
+section {
+  border: 20px solid green;
+  border-radius: 15px;
+}
+
+section img {
+  border: 1px solid black;
+  margin: 15px;
+}
+
+/* This section covers the footer */
+footer {
+  clear: both;
+  border: 1px solid black;
+  height: 100px;
+  width: 960px;
+  margin: 30px auto;
+  text-align: center;
+}
