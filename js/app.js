@@ -137,10 +137,20 @@ function handleSectionClick(event){
   if(totalVotes < 25){
     console.log('event handler works', event.target);
     console.log('event taget name = ', event.target.name);
-    console.log('event target votes = ', event.target.votes);
-    allProducts[event.target.id][name];
+    // console.log('event target votes = ', event.target.votes);
+    for(var i = 0; i < allProducts.length; i++){
+      // console.log('event handler for loop triggered');
+      // console.log(event.target.title);
+      if(event.target.title === allProducts[i].name){
+        console.log('inner for loop conditional triggered');
+        console.log(allProducts[i]);
+        console.log('allproducts[i].votes = ', allProducts[i].votes);
+        allProducts[i].votes++;
+        console.log('allproducts[i].votes = ', allProducts[i].votes);
+      }
+    }
     event.target.votes += 1;
-    console.log('event target votes ');
+    // console.log('event target votes ');
     totalVotes++;
     showRandomProduct1();
     showRandomProduct2();
