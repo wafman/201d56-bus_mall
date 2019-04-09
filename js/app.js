@@ -14,7 +14,12 @@ var previous1;
 var previous2;
 var previous3;
 
-var totalVotes = 0;
+var totalVotes = 25;
+
+var products = [];
+var productVotes = [];
+var chartDrawn = false;
+var myChart;
 
 
 //      DOM Variables
@@ -50,6 +55,13 @@ function checkProductArray(product){
     }
   }
   return product;
+}
+
+function updateChartArrays() {
+  for(var i = 0; i < allProducts.length; i++){
+    products[i] = allProducts[i].name;
+    productVotes[i] = allProducts[i].votes;
+  }
 }
 
 
@@ -134,30 +146,20 @@ function renderList(){
 
 //  Event Handlers
 function handleSectionClick(event){
-  if(totalVotes < 25){
-    console.log('event handler works', event.target);
-    console.log('event taget name = ', event.target.name);
-    // console.log('event target votes = ', event.target.votes);
+  if(totalVotes > 0){ //changed totalVotes to decrement starting at 25
     for(var i = 0; i < allProducts.length; i++){
-      // console.log('event handler for loop triggered');
-      // console.log(event.target.title);
       if(event.target.title === allProducts[i].name){
-        console.log('inner for loop conditional triggered');
-        console.log(allProducts[i]);
-        console.log('allproducts[i].votes = ', allProducts[i].votes);
         allProducts[i].votes++;
-        console.log('allproducts[i].votes = ', allProducts[i].votes);
+        updateChartArrays();
       }
     }
-    event.target.votes += 1;
-    // console.log('event target votes ');
-    totalVotes++;
+    totalVotes--;
     showRandomProduct1();
     showRandomProduct2();
     showRandomProduct3();
   } else {
     productContainer.removeEventListener('click', handleSectionClick);
-    renderList();
+    // renderList();
   }
 
 }
@@ -189,6 +191,69 @@ new ProductImage('wine-glass');
 showRandomProduct1();
 showRandomProduct2();
 showRandomProduct3();
+document.getElementById('votesRemaining').textContent = `Votes Remaining: ${totalVotes}`;
+
 
 //      Event listeners
 productContainer.addEventListener('click', handleSectionClick);
+
+document.getElementById('generateChart').addEventListener('click', function(){
+  drawChart();
+  console.log('chart is drawn');
+});
+
+document.getElementById('generateList').addEventListener('click', function() {
+  renderList();
+});
+
+document.getElementById('voteTally').addEventListener('click', function() {
+  document.getElementById('voteTally').hidden = true;
+});
+
+
+
+//          Chartjs
+var data = {
+  labels: products,
+  datasets: [{
+    label: 'Products',
+    data: productVotes,
+    backgroundColor: [
+      'blue',
+      'orange',
+      'yellow',
+      'green',
+      'red'
+    ],
+    borderColor: [
+      'black'
+    ],
+    borderWidth: 1
+  }]
+};
+
+function drawChart(){
+  var ctx = document.getElementById('votesChart').getContext('2d');
+  var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: data,
+    options: {
+      responsive: false,
+      animation: {
+        duration: 1000,
+        easing: 'easeOutBounce'
+      },
+      scales: {
+        yAxes: [{
+          ticks: {
+            max: 25,
+            min: 0,
+            stepSize: 1.0,
+            beginAtZero: true
+          }
+        }]
+      }
+    }
+  });
+  chartDrawn = true;
+}
