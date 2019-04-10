@@ -88,11 +88,6 @@ function showTotalVotes(){
   document.getElementById('votesRemaining').textContent = `Votes Remaining: ${totalVotes}`;
 }
 
-function showElement(element){
-  console.log('showElement function works', element);
-  document.getElementById(element).style.display = 'block';
-}
-
 //  Event Handlers
 function handleSectionClick(event){
   if(totalVotes > 0){ //changed totalVotes to decrement starting at 25
@@ -110,9 +105,6 @@ function handleSectionClick(event){
     showRandom(product3);
   } else {
     productContainer.removeEventListener('click', handleSectionClick);
-    showElement('generateList');
-    showElement('generateChart');
-    // renderList();
   }
 
 }
@@ -153,7 +145,7 @@ showRandom(product3);
 productContainer.addEventListener('click', handleSectionClick);
 
 document.getElementById('generateChart').addEventListener('click', function(){
-  if(voteTally !== 0){
+  if(voteTally > 0){
     alert('You have ' + totalVotes + ' votes left.')
   } else {
     drawChart();
@@ -162,7 +154,7 @@ document.getElementById('generateChart').addEventListener('click', function(){
 });
 
 document.getElementById('generateList').addEventListener('click', function() {
-  if(voteTally !== 0){
+  if(voteTally > 0){
     alert('You have ' + totalVotes + ' votes left.')
   } else {
     renderList();
@@ -244,7 +236,7 @@ function drawChart(){
       scales: {
         yAxes: [{
           ticks: {
-            max: 25,
+            max: 10,
             min: 0,
             stepSize: 1.0,
             beginAtZero: true
