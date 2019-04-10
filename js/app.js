@@ -166,6 +166,10 @@ document.getElementById('voteTally').addEventListener('click', function() {
   document.getElementById('voteTally').hidden = true;
 });
 
+document.getElementById('clearLocalStorage').addEventListener('click', function () {
+  localStorage.clear();
+});
+
 
 
 
