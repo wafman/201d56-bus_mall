@@ -45,9 +45,9 @@ function ProductImage(name){
 //  Helper Functions
 function newCheckProductArray(product){
   previousArray = previousArray.slice(-6, previousArray.length);
-  if(previousArray.includes(product)){
+  while(previousArray.includes(product)){
+    console.log('previous array contains ', product);
     product = Math.floor(Math.random() * allProducts.length);
-    
   }
   return product;
 }
@@ -62,6 +62,7 @@ function updateChartArrays() {
 function showRandom(imageId){
   var randomImg = Math.floor(Math.random() * allProducts.length);
   // checkProductArray(randomImg);
+  // previousArray.push(randomImg);
   console.log('randimg before check', randomImg);
   var checkedImg = newCheckProductArray(randomImg);
   console.log('randimg after check', checkedImg);
