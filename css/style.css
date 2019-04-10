@@ -34,6 +34,17 @@ main {
   text-align: center;
 }
 
+main div {
+  margin: 30px auto;
+  text-align: center;
+  display: inline-block;
+  width: 960px;
+}
+
+button {
+  text-align: center;
+}
+
 main h1 {
   font-size: 2em;
   font-weight: bold;
@@ -57,6 +68,16 @@ section {
 section img {
   border: 1px solid black;
   margin: 15px;
+}
+
+#generateList {
+  display: none;
+  text-align: center;
+}
+
+#generateChart {
+  display: none;
+  text-align: center;
 }
 
 /* This section covers the footer */
