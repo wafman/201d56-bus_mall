@@ -106,31 +106,39 @@ function handleSectionClick(event){
     showRandom(product3);
   } else {
     productContainer.removeEventListener('click', handleSectionClick);
+    var storedProducts = JSON.stringify(allProducts);
+    localStorage.setItem('votes', storedProducts);
   }
 
 }
 
+
 // ++++++++++++++++++++Executable Code++++++++++++++++++++\\
-new ProductImage('bag');
-new ProductImage('banana');
-new ProductImage('bathroom');
-new ProductImage('boots');
-new ProductImage('breakfast');
-new ProductImage('bubblegum');
-new ProductImage('chair');
-new ProductImage('cthulhu');
-new ProductImage('dog-duck');
-new ProductImage('dragon');
-new ProductImage('pen');
-new ProductImage('pet-sweep');
-new ProductImage('scissors');
-new ProductImage('shark');
-new ProductImage('sweep');
-new ProductImage('tauntaun');
-new ProductImage('unicorn');
-new ProductImage('usb');
-new ProductImage('water-can');
-new ProductImage('wine-glass');
+if(localStorage.votes){
+  allProducts = JSON.parse(localStorage.votes);
+} else {
+  new ProductImage('bag');
+  new ProductImage('banana');
+  new ProductImage('bathroom');
+  new ProductImage('boots');
+  new ProductImage('breakfast');
+  new ProductImage('bubblegum');
+  new ProductImage('chair');
+  new ProductImage('cthulhu');
+  new ProductImage('dog-duck');
+  new ProductImage('dragon');
+  new ProductImage('pen');
+  new ProductImage('pet-sweep');
+  new ProductImage('scissors');
+  new ProductImage('shark');
+  new ProductImage('sweep');
+  new ProductImage('tauntaun');
+  new ProductImage('unicorn');
+  new ProductImage('usb');
+  new ProductImage('water-can');
+  new ProductImage('wine-glass');
+}
+
 
 
 //      Functions Calls
@@ -169,7 +177,6 @@ document.getElementById('voteTally').addEventListener('click', function() {
 document.getElementById('clearLocalStorage').addEventListener('click', function () {
   localStorage.clear();
 });
-
 
 
 
@@ -252,3 +259,17 @@ function drawChart(){
   });
   chartDrawn = true;
 }
+
+
+//local storage code
+
+
+
+
+
+// localStorage.getItem( <key> ) ===> returns the data you put in as a string
+//JSON.parse( <string> ) ==> turns that string back into your original data
+
+// console.log(retrievedProducts);
+
+
